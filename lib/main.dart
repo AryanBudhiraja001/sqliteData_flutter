@@ -1,13 +1,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:search_task/screen/splashScreen.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:search_task/services/database/db_helper.dart';
-
-
 
 
 final dbHelper = DatabaseHelper();
@@ -19,10 +16,6 @@ Future<void> main() async {
 }
 
 
-
-
-
-
 class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
@@ -31,12 +24,11 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var token;
-
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +36,6 @@ class _MyAppState extends State<MyApp> {
     return  GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
-
     );
   }
 }

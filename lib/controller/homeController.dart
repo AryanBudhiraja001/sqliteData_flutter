@@ -12,7 +12,7 @@ import 'package:search_task/services/database/db_Service.dart';
 import 'package:search_task/services/repo/common_repo.dart';
 import 'package:get/get.dart';
 
-
+/// Brand, Category, SubCategory, Collection, Fit, Theme, Finish, Offer Month, Gender, Name, Description
 class HomeController extends GetxController {
 
   AuthenticationManager manager = Get.put(AuthenticationManager());
@@ -36,8 +36,6 @@ class HomeController extends GetxController {
     // TODO: implement onInit
     super.onInit();
     getAllData();
-   // homeFunction();
-  //  scrollController.addListener(_loadMore);
   }
 
 
@@ -76,8 +74,32 @@ class HomeController extends GetxController {
     if (loginResponse.productCount==652) {
       for(int i=0; i<loginResponse.products!.length;i++){
         print('subcategory home function ${loginResponse.products![i].subCategory}');
-        tenDataList.add(Products(image:loginResponse.products![i].image,option:loginResponse.products![i].option,qRCode: loginResponse.products![i].qRCode,mRP: loginResponse.products![i].mRP,subCategory:loginResponse.products![i].subCategory));
-      //  _productServices.insertData(Products(image:loginResponse.products![i].image,option:loginResponse.products![i].option,qRCode: loginResponse.products![i].qRCode,mRP: loginResponse.products![i].mRP));
+        tenDataList.add(Products(
+            image:loginResponse.products![i].image,
+            option:loginResponse.products![i].option,
+            qRCode: loginResponse.products![i].qRCode,
+            mRP: loginResponse.products![i].mRP,
+            subCategory:loginResponse.products![i].subCategory,
+
+            brand: loginResponse.products![i].brand,
+            category: loginResponse.products![i].category,
+            season: loginResponse.products![i].season,
+            gender:loginResponse.products![i].gender,
+            mood: loginResponse.products![i].mood,
+            theme:loginResponse.products![i].theme,
+            color: loginResponse.products![i].color,
+            name:loginResponse.products![i].name,
+            collection:loginResponse.products![i].collection,
+            fit:loginResponse.products![i].fit,
+            description:loginResponse.products![i].description,
+            finish:loginResponse.products![i].finish
+
+
+
+        ));
+
+
+        //_productServices.insertData(Products(image:loginResponse.products![i].image,option:loginResponse.products![i].option,qRCode: loginResponse.products![i].qRCode,mRP: loginResponse.products![i].mRP));
         // dataList.add(Products(image:loginResponse.products![i].image,option:loginResponse.products![i].option,qRCode: loginResponse.products![i].qRCode,mRP: loginResponse.products![i].mRP));
       }
 
@@ -92,19 +114,42 @@ class HomeController extends GetxController {
 
   localDataSave(){
     for (var list in tenDataList) {
-
       _productServices.insertData(list);
     }
   }
 
 
   getAllData() async {
+    print("get All Data");
     var users = await _productServices.readAllData();
-    users.forEach((user) {
 
-      print("subcategory getAllData ${user['SubCategory']}");
-      print('get all Option ${user['Option']}');
-      dataList.add(Products(image:user['ImageUrl'],option:user['Option'],qRCode: user['QRCode'],mRP: user['MRP'],subCategory:user['SubCategory']));
+    print("usersList   ${users.length}");
+    users.forEach((json) {
+
+      print("subcategory getAllData ${json['SubCategory']}");
+      print('get all Option ${json['Option']}');
+      dataList.add(Products(
+        mRP :json['MRP'],
+        color : json['color'],
+        option :json['Option'],
+        qRCode : json['QRCode'],
+        image : json['ImageUrl'],
+        subCategory : json['SubCategory'],
+        season : json['Season'],
+        brand : json['Brand'],
+        mood : json['Mood'],
+        gender : json['Gender'],
+        theme : json['Theme'],
+        category : json['Category'],
+        name : json['Name'],
+        collection :json['Collection'],
+        fit : json['Fit'],
+        description : json['Description'],
+        finish : json['finish'],
+
+
+
+      ));
     });
 
     update();
@@ -115,9 +160,30 @@ class HomeController extends GetxController {
     dataList.clear();
     var searchList = await _productServices.readDataThroughId(text);
     print("Search  ${searchList}");
-    searchList.forEach((user) {
-      print("user  ${user['Option']}");
-      dataList.add(Products(image:user['ImageUrl'],option:user['Option'],qRCode: user['QRCode'],mRP: user['MRP'],subCategory:user['subCategory'] ));
+    searchList.forEach((json) {
+      print("user  ${json['Option']}");
+      dataList.add(Products(
+        mRP :json['MRP'],
+        color : json['color'],
+        option :json['Option'],
+        qRCode : json['QRCode'],
+        image : json['ImageUrl'],
+        subCategory : json['SubCategory'],
+        season : json['Season'],
+        brand : json['Brand'],
+        mood : json['Mood'],
+        gender : json['Gender'],
+        theme : json['Theme'],
+        category : json['Category'],
+        name : json['Name'],
+        collection :json['Collection'],
+        fit : json['Fit'],
+        description : json['Description'],
+        finish : json['finish'],
+
+
+
+      ));
     });
   }
 

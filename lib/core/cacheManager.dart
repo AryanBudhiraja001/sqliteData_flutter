@@ -1,10 +1,6 @@
-
-
 import 'package:get_storage/get_storage.dart';
 
-
 mixin CacheManager {
-
 
   Future<bool> saveLoginResponse(String? loginResponse) async {
     final box = GetStorage();
@@ -39,9 +35,6 @@ mixin CacheManager {
     final box = GetStorage();
     await box.remove(CacheManagerKey.SPLASHRESPONSE.toString());
   }
-
-
-
 
 }
 

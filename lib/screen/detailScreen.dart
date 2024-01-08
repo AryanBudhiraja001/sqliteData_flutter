@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:search_task/controller/detailController.dart';
 
 import 'package:search_task/controller/homeController.dart';
@@ -33,121 +34,266 @@ class DetailScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            InkWell(
-              onTap: () {
+            Container(
+              padding: EdgeInsets.all(10),
+              child:  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 200,
+                        alignment: Alignment.center,
+                        child: Image.network('${data!.image}',height: 200,width: double.infinity,fit: BoxFit.cover,),
+                      ),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                       // margin: EdgeInsets.only(top: 5,bottom: 5),
+                        child: Row(
+                          children: [
+                            Text("Brand Name :",overflow: TextOverflow.ellipsis,style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.blueColor,fontSize: textSizeNormal)),
 
-             },
-              child: Container(
-                padding: EdgeInsets.all(10),
-                child:  Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          alignment: Alignment.center,
-                          child: Image.network('${data!.image}',height: 200,width: double.infinity,fit: BoxFit.cover,),
+                            Text("${data!.brand}",overflow: TextOverflow.ellipsis,style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.blueColor,fontSize: textSizeMedium)),
+                          ],
                         ),
-                        // Container(
-                        //   // width: 230,
-                        //   margin: EdgeInsets.only(top: 5,bottom: 5),
-                        //   child: Text(' ${data!.image}',
-                        //     maxLines: 3,
-                        //     style: TextStyle(color: ColorDark.collegeText,fontWeight: FontWeight.w500,fontSize: textSizeLargeMedium),),
-                        // ),
-
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          margin: EdgeInsets.only(top: 5,bottom: 5),
-                          child: Text("QR Code${data!.qRCode}",overflow: TextOverflow.ellipsis,style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.collegeText,fontSize: textSizeMedium)),
-                        ),
-                        SizedBox(height: 5,),
-
-                        Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Text("Price -",style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.black,fontSize: textSizeSMedium)),
-                              ),
-                              SizedBox(width: 20,),
-                              Container(
-                                child: Text('${data!.mRP}',style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.black,fontSize: textSizeSMedium)),
-                              )
-                            ],
+                      ),
+                      SizedBox(height: 5,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            margin: EdgeInsets.only(top: 5,bottom: 5),
+                            child: Row(
+                              children: [
+                                Text("Color :",overflow: TextOverflow.ellipsis,style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.blueColor,fontSize: textSizeNormal)),
+                                Text("${data!.color}",overflow: TextOverflow.ellipsis,style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.blueColor,fontSize: textSizeMedium)),
+                              ],
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 10,),
-                        Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                child: Text('Exchange -',style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.black,fontSize: textSizeSMedium)),
-                              ),
-                              SizedBox(width: 20,),
-                              Container(
-                                child: Text('${data!.option}',style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.black,fontSize: textSizeSMedium)),
-                              )
-                            ],
-                          ),
-                        )
-                      ],
-                    )
+                          Container(
+                            child: Text('Price \u{20B9} ${data!.mRP}',style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.black,fontSize: textSizeSMedium)),
+                          )
 
-              ),
+                        ],
+                      ),
+                      SizedBox(height: 5,),
+
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Text('OP -',style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.blueColor,fontSize: textSizeNormal)),
+                            ),
+                            SizedBox(width: 20,),
+                            Container(
+                              child: Text('${data!.option}',style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.blueColor,fontSize: textSizeSMedium)),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  )
+
             ),
             SizedBox(height: 10,),
-            Obx(()=>
-                GridView.builder(
-                  padding: EdgeInsets.zero,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-                    shrinkWrap: true,
-
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: controller.sameDataList.length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        margin: EdgeInsets.only(left: 10,right: 10),
-                        child: Column(
+            Container(
+              padding: EdgeInsets.all(10),
+              //alignment: Alignment.centerLeft,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Product Details",style: TextStyle(fontWeight: FontWeight.w600,fontSize: textSizeNormal),),
+                  SizedBox(height: 30,),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              child: Image.network(controller.sameDataList.elementAt(index).image!,height: 50,width: double.infinity,fit: BoxFit.cover,),
+                              child: Text('Brand Name',style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.blueColor,fontSize: textSizeSMedium)),
                             ),
-                            //SizedBox(height: 10,),
+                            SizedBox(height: 5,),
                             Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    child: Text("QrCode: ${controller.sameDataList.elementAt(index).qRCode.toString()}",style: TextStyle(fontWeight: FontWeight.w700),),
-                                  ),
-                                  SizedBox(height: 10,),
-                                  Text("OP:  ${controller.sameDataList.elementAt(index).option.toString()}",style: TextStyle(fontWeight: FontWeight.w700),),
-                                ],
-                              ),
-                            ),
-                            // SizedBox(height: 5,),
-                            // Row(
-                            //  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            //   children: [
-                            //
-                            //     Container(
-                            //       child: Text("MRP: ${data!.mRP.toString()}",style: TextStyle(fontWeight: FontWeight.w700),),
-                            //     ),
-                            //     Container(
-                            //       child: Text("SubCategory: ${data!.subCategory.toString()}",style: TextStyle(fontWeight: FontWeight.w700),),
-                            //     ),
-                            //
-                            //   ],
-                            // ),
-                            // SizedBox(height: 5,),
-
+                              child: Text('${data!.brand}',style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.black,fontSize: textSizeSMedium)),
+                            )
                           ],
-                        ) ,
-                      );
-                    })
-            
+                        ),
+
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Container(
+                              child: Text("Category",style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.blueColor,fontSize: textSizeSMedium)),
+                            ),
+                            SizedBox(height: 5,),
+                            Container(
+                              child: Text('${data!.category}',style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.black,fontSize: textSizeSMedium)),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Divider(thickness: 2.0,),
+                  SizedBox(height: 20,),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Text('Description',style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.blueColor,fontSize: textSizeSMedium)),
+                            ),
+
+                            Container(
+                              child: Text('${data!.description}',style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.black,fontSize: textSizeSMedium)),
+                            )
+                          ],
+                        ),
+
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Container(
+                              child: Text("Sub-Category",style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.blueColor,fontSize: textSizeSMedium)),
+                            ),
+
+                            Container(
+                              child: Text('${data!.subCategory}',style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.black,fontSize: textSizeSMedium)),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Divider(thickness: 2.0,),
+                  SizedBox(height: 20,),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Text('Fit',style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.blueColor,fontSize: textSizeSMedium)),
+                            ),
+                            SizedBox(height: 5,),
+                            Container(
+                              child: Text('${data!.fit}',style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.black,fontSize: textSizeSMedium)),
+                            )
+                          ],
+                        ),
+
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Container(
+                              child: Text("Name",style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.blueColor,fontSize: textSizeSMedium)),
+                            ),
+                            SizedBox(height: 5,),
+                            Container(
+                              child: Text('${data!.name}',style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.black,fontSize: textSizeSMedium)),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Divider(thickness: 2.0,),
+                  SizedBox(height: 20,),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Text('Finish',style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.blueColor,fontSize: textSizeSMedium)),
+                            ),
+                            SizedBox(height: 5,),
+                            Container(
+                              child: Text('${data!.finish}',style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.black,fontSize: textSizeSMedium)),
+                            )
+                          ],
+                        ),
+
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Container(
+                              child: Text("Gender",style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.blueColor,fontSize: textSizeSMedium)),
+                            ),
+                            SizedBox(height: 5,),
+                            Container(
+                              child: Text('${data!.gender}',style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.black,fontSize: textSizeSMedium)),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
+
+                ],
+              ),
+
+            ),
+
+
+            SizedBox(height: 10,),
+
+            Container(
+                alignment: Alignment.centerLeft,
+              margin: EdgeInsets.only(left: 10),
+              child: Text("Similar Products",style: TextStyle(fontWeight: FontWeight.w600,fontSize: textSizeNormal),),
+            ),
+
+            SizedBox(height: 10,),
+            Container(
+              height: 300,
+              child: Obx(()=>
+                  ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    padding: EdgeInsets.zero,
+                      //gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                      shrinkWrap: true,
+                      //physics: NeverScrollableScrollPhysics(),
+                      itemCount: controller.sameDataList.toSet().length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          margin: EdgeInsets.only(left: 10,right: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+
+                                child: Image.network(controller.sameDataList.elementAt(index).image!,height: 100,width: 100,fit: BoxFit.cover,),
+                              ),
+                              //SizedBox(height: 10,),
+                              Container(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      child: Text("${controller.sameDataList.elementAt(index).brand.toString()}",style: TextStyle(fontWeight: FontWeight.w700),),
+                                    ),
+                                    SizedBox(height: 10,),
+                                    Text("OP:  ${controller.sameDataList.elementAt(index).option.toString()}",style: TextStyle(fontWeight: FontWeight.w700),),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ) ,
+                        );
+                      })
+
+              ),
             )
 
 

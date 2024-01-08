@@ -42,21 +42,20 @@ class Products {
   var mRP;
   String? option;
   var subCategory;
-  //
-  // String? season;
-  // String? brand;
-  // String? mood;
-  // String? gender;
-  // String? theme;
-  // String? category;
-  // String? name;
-  // String? color;
-  //
-  //
-  // String? subCategory;
-  // String? collection;
-  // String? fit;
-  // String? description;
+  String? season;
+  String? brand;
+  String? theme;
+  String? category;
+  String? mood;
+  String? gender;
+  String? name;
+  String? color;
+
+  String? collection;
+  String? fit;
+  String? description;
+  String? finish;
+
   //
   // String? looks;
   // var looksImageUrl;
@@ -107,171 +106,51 @@ class Products {
   // List? relatedProducts;
 
   //Products({this.season, this.brand, this.mood, this.gender, this.theme, this.category, this.name, this.color, this.option, this.mRP, this.subCategory, this.collection, this.fit, this.description, this.qRCode, this.looks, this.looksImageUrl, this.looksImage, this.fabric, this.eAN, this.finish, this.availableSizes, this.availableSizesWithDeactivated, this.offerMonths, this.productClass, this.promoted, this.secondary, this.deactivated, this.defaultSize, this.material, this.quality, this.qRCode2, this.displayName, this.displayOrder, this.minQuantity, this.maxQuantity, this.qPSCode, this.demandType, this.image, this.imageUrl, this.imageUrl2, this.imageUrl3, this.imageUrl4, this.imageUrl5, this.imageUrl6, this.imageUrl7, this.imageUrl8, this.imageUrl9, this.imageUrl10, this.imageUrl11, this.imageUrl12, this.adShoot, this.technology, this.imageAlt, this.technologyImage, this.technologyImageUrl, this.isCore, this.minimumArticleQuantity, this.likeabilty, this.brandRank, this.gradeToRatiosApps, this.relatedProducts});
-  Products({this.image,this.option,this.mRP,this.qRCode,this.subCategory});
+  Products({this.image,this.option,this.mRP,this.color,this.finish,this.subCategory,this.qRCode,this.brand,this.category,this.collection,this.description,this.fit,this.gender,this.mood,this.name,this.season,this.theme});
 
   Products.fromJson(Map<String, dynamic> json) {
     mRP = json['MRP'];
+    color = json['color'];
     option = json['Option'];
     qRCode = json['QRCode'];
     image = json['ImageUrl'];
     subCategory = json['SubCategory'];
-
-
-    // season = json['Season'];
-    // brand = json['Brand'];
-    // mood = json['Mood'];
-    // gender = json['Gender'];
-    // theme = json['Theme'];
-    // category = json['Category'];
-    // name = json['Name'];
-    // color = json['Color'];
-    // option = json['Option'];
-    // mRP = json['MRP'];
-    // subCategory = json['SubCategory'];
-    // collection = json['Collection'];
-    // fit = json['Fit'];
-    // description = json['Description'];
-    // qRCode = json['QRCode'];
-    // looks = json['Looks'];
-    // looksImageUrl = json['LooksImageUrl'];
-    // looksImage = json['LooksImage'];
-    // fabric = json['Fabric'];
-    // eAN = json['EAN'] != null ? new EAN.fromJson(json['EAN']) : null;
-    // finish = json['Finish'];
-    // availableSizes = json['AvailableSizes'].cast<String>();
-    // if (json['AvailableSizesWithDeactivated'] != null) {
-    //   availableSizesWithDeactivated = <AvailableSizesWithDeactivated>[];
-    //   json['AvailableSizesWithDeactivated'].forEach((v) { availableSizesWithDeactivated!.add(new AvailableSizesWithDeactivated.fromJson(v)); });
-    // }
-    // //sizeWiseStock = json['SizeWiseStock'] != null ? new SizeWiseStock.fromJson(json['SizeWiseStock']) : null;
-    // //sizeWiseStockPlant = json['SizeWiseStockPlant'] != null ? new SizeWiseStock.fromJson(json['SizeWiseStockPlant']) : null;
-    // offerMonths = json['OfferMonths'].cast<String>();
-    // productClass = json['ProductClass'];
-    // promoted = json['Promoted'];
-    // secondary = json['Secondary'];
-    // deactivated = json['Deactivated'];
-    // defaultSize = json['DefaultSize'];
-    // material = json['Material'];
-    // quality = json['Quality'];
-    // qRCode2 = json['QRCode2'];
-    // displayName = json['DisplayName'];
-    // displayOrder = json['DisplayOrder'];
-    // minQuantity = json['MinQuantity'];
-    // maxQuantity = json['MaxQuantity'];
-    // qPSCode = json['QPSCode'];
-    // demandType = json['DemandType'];
-    // image = json['Image'];
-    // imageUrl = json['ImageUrl'];
-    // imageUrl2 = json['ImageUrl2'];
-    // imageUrl3 = json['ImageUrl3'];
-    // imageUrl4 = json['ImageUrl4'];
-    // imageUrl5 = json['ImageUrl5'];
-    // imageUrl6 = json['ImageUrl6'];
-    // imageUrl7 = json['ImageUrl7'];
-    // imageUrl8 = json['ImageUrl8'];
-    // imageUrl9 = json['ImageUrl9'];
-    // imageUrl10 = json['ImageUrl10'];
-    // imageUrl11 = json['ImageUrl11'];
-    // imageUrl12 = json['ImageUrl12'];
-    // adShoot = json['AdShoot'];
-    // technology = json['Technology'];
-    // imageAlt = json['ImageAlt'];
-    // technologyImage = json['TechnologyImage'];
-    // technologyImageUrl = json['TechnologyImageUrl'];
-    // isCore = json['IsCore'];
-    // minimumArticleQuantity = json['MinimumArticleQuantity'];
-    // likeabilty = json['Likeabilty'];
-    // brandRank = json['BrandRank'];
+    season = json['Season'];
+    brand = json['Brand'];
+    mood = json['Mood'];
+    gender = json['Gender'];
+    theme = json['Theme'];
+    category = json['Category'];
+    name = json['Name'];
+    option = json['Option'];
+    mRP = json['MRP'];
+    collection = json['Collection'];
+    fit = json['Fit'];
+    description = json['Description'];
+    finish = json['finish'];
 
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['MRP'] = this.mRP;
+    data['color']= this.color;
     data['ImageUrl'] = this.image;
-    data['Option'] = this.option;
     data['QRCode'] = this.qRCode;
-    data['SubCategory']= this.subCategory;
+    data['SubCategory'] = this.subCategory;
+    data['Season'] = this.season;
+    data['Brand'] = this.brand;
+    data['Mood'] = this.mood;
+    data['Gender'] = this.gender;
+    data['Theme'] = this.theme;
+    data['Category'] = this.category;
+    data['Name'] = this.name;
+    data['Option'] = this.option;
+    data['Collection'] = this.collection;
+    data['Fit'] = this.fit;
+    data['Description'] = this.description;
+    data['finish']= this.finish;
 
-
-
-
-    // data['Season'] = this.season;
-    // data['Brand'] = this.brand;
-    // data['Mood'] = this.mood;
-    // data['Gender'] = this.gender;
-    // data['Theme'] = this.theme;
-    // data['Category'] = this.category;
-    // data['Name'] = this.name;
-    // data['Color'] = this.color;
-    // data['Option'] = this.option;
-    // data['MRP'] = this.mRP;
-    // data['SubCategory'] = this.subCategory;
-    // data['Collection'] = this.collection;
-    // data['Fit'] = this.fit;
-    // data['Description'] = this.description;
-    // data['QRCode'] = this.qRCode;
-    // data['Looks'] = this.looks;
-    // data['LooksImageUrl'] = this.looksImageUrl;
-    // data['LooksImage'] = this.looksImage;
-    // data['Fabric'] = this.fabric;
-    // if (this.eAN != null) {
-    //   data['EAN'] = this.eAN!.toJson();
-    // }
-    // data['Finish'] = this.finish;
-    // data['AvailableSizes'] = this.availableSizes;
-    // if (this.availableSizesWithDeactivated != null) {
-    //   data['AvailableSizesWithDeactivated'] = this.availableSizesWithDeactivated!.map((v) => v.toJson()).toList();
-    // }
-    // if (this.sizeWiseStock != null) {
-    //   data['SizeWiseStock'] = this.sizeWiseStock!.toJson();
-    // }
-    // if (this.sizeWiseStockPlant != null) {
-    //   data['SizeWiseStockPlant'] = this.sizeWiseStockPlant!.toJson();
-    // }
-    // data['OfferMonths'] = this.offerMonths;
-    // data['ProductClass'] = this.productClass;
-    // data['Promoted'] = this.promoted;
-    // data['Secondary'] = this.secondary;
-    // data['Deactivated'] = this.deactivated;
-    // data['DefaultSize'] = this.defaultSize;
-    // data['Material'] = this.material;
-    // data['Quality'] = this.quality;
-    // data['QRCode2'] = this.qRCode2;
-    // data['DisplayName'] = this.displayName;
-    // data['DisplayOrder'] = this.displayOrder;
-    // data['MinQuantity'] = this.minQuantity;
-    // data['MaxQuantity'] = this.maxQuantity;
-    // data['QPSCode'] = this.qPSCode;
-    // data['DemandType'] = this.demandType;
-    // data['Image'] = this.image;
-    // data['ImageUrl'] = this.imageUrl;
-    // data['ImageUrl2'] = this.imageUrl2;
-    // data['ImageUrl3'] = this.imageUrl3;
-    // data['ImageUrl4'] = this.imageUrl4;
-    // data['ImageUrl5'] = this.imageUrl5;
-    // data['ImageUrl6'] = this.imageUrl6;
-    // data['ImageUrl7'] = this.imageUrl7;
-    // data['ImageUrl8'] = this.imageUrl8;
-    // data['ImageUrl9'] = this.imageUrl9;
-    // data['ImageUrl10'] = this.imageUrl10;
-    // data['ImageUrl11'] = this.imageUrl11;
-    // data['ImageUrl12'] = this.imageUrl12;
-    // data['AdShoot'] = this.adShoot;
-    // data['Technology'] = this.technology;
-    // data['ImageAlt'] = this.imageAlt;
-    // data['TechnologyImage'] = this.technologyImage;
-    // data['TechnologyImageUrl'] = this.technologyImageUrl;
-    // data['IsCore'] = this.isCore;
-    // data['MinimumArticleQuantity'] = this.minimumArticleQuantity;
-    // data['Likeabilty'] = this.likeabilty;
-    // data['BrandRank'] = this.brandRank;
-    // if (this.gradeToRatiosApps != null) {
-    //   data['GradeToRatiosApps'] = this.gradeToRatiosApps!.map((v) => v.toJson()).toList();
-    // }
-    // if (this.relatedProducts != null) {
-    //   data['RelatedProducts'] = this.relatedProducts!.map((v) => v.toJson()).toList();
-    // }
     return data;
   }
 }

@@ -20,15 +20,41 @@ class DetailController extends GetxController{
   sameBrand(Products products)async {
 
     sameDataList.clear();
-    // print("subCategory ${products.subCategory}");
-    // print("subCategory ${products.subCategory}");
     var users = await _productServices.readAllData();
-    users.forEach((user) {
-    if(user['SubCategory']!=null){
-      if(user['SubCategory'].toString().contains(products!.subCategory.toString())){
-        print("sub ${user['SubCategory'].toString()}");
-        print("sub ${user['Option'].toString()}");
-        sameDataList.add(Products(image:user['ImageUrl'],option:user['Option'],qRCode: user['QRCode'],mRP: user['MRP'],subCategory:user['SubCategory'] ));
+    users.forEach((json) {
+    if(json['SubCategory']!=null){
+      if(json['SubCategory'].toString().contains(products!.subCategory.toString())){
+        if(json['SubCategory'].toString().contains(products!.qRCode.toString())){
+
+        }else{
+          sameDataList.add(Products(
+              mRP :json['MRP'],
+            color : json['color'],
+            option :json['Option'],
+            qRCode : json['QRCode'],
+            image : json['ImageUrl'],
+            subCategory : json['SubCategory'],
+            season : json['Season'],
+            brand : json['Brand'],
+            mood : json['Mood'],
+            gender : json['Gender'],
+            theme : json['Theme'],
+            category : json['Category'],
+            name : json['Name'],
+            collection :json['Collection'],
+            fit : json['Fit'],
+            description : json['Description'],
+            finish : json['finish'],
+
+
+
+
+          ));
+        }
+        //print("sub ${user['SubCategory'].toString()}");
+        //print("sub ${user['Option'].toString()}");
+
+
       }
     }
 

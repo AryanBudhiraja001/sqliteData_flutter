@@ -2,7 +2,7 @@ import 'package:path/path.dart';
 import 'package:search_task/services/database/table_name.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
-
+/// Brand, Category, SubCategory, Collection, Fit, Theme, Finish, Offer Month, Gender, Name, Description
 
 class DatabaseHelper {
   static const _databaseName = "local.db";
@@ -10,13 +10,28 @@ class DatabaseHelper {
 
   //static const table = 'localData';
 
+
+
   static const columnId = '_id';
   static const image = 'ImageUrl';
-  //static const url = 'URL';
   static const option = 'Option';
   static const qrCode = 'QRCode';
   static const mrp = 'MRP';
+
+  static const Brand = 'Brand';
+  static const Category = 'Category';
   static const subCategory = 'SubCategory';
+  static const Collection = 'Collection';
+  static const Description = 'Description';
+  static const Gender = 'Gender';
+  static const Theme = 'Theme';
+  static const Name = 'Name';
+  static const Color = 'Color';
+  static const Fit = 'Fit';
+  static const Season = 'Season';
+  static const Finish = 'Finish';
+  static const Mood = 'Mood';
+
  //static late Database _db;
 
   // this opens the database (and creates it if it doesn't exist)
@@ -47,7 +62,23 @@ class DatabaseHelper {
             $option TEXT,
             $qrCode TEXT,
             $mrp TEXT,
-            $subCategory TEXT
+            $subCategory TEXT,
+            
+            $Brand TEXT,
+            $Category TEXT,
+            $Collection TEXT,
+            $Description TEXT,
+            $Gender TEXT,
+            $Theme TEXT,
+            $Name TEXT,
+            $Color TEXT,
+            $Fit TEXT,
+            $Season TEXT,
+            $Finish TEXT,
+            $Mood TEXT
+           
+            
+            
           )
           ''');
   }

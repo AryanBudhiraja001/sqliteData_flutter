@@ -13,8 +13,6 @@ class HomeScreen extends StatelessWidget {
    HomeScreen({super.key});
    var homeController = Get.put(HomeController());
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -161,7 +159,7 @@ class HomeScreen extends StatelessWidget {
                                                 margin: EdgeInsets.only(top: 5,bottom: 5),
                                                 child: Text('OP: ${homeController.dataList.elementAt(index).option}',
                                                   maxLines: 3,
-                                                  style: TextStyle(color: ColorDark.collegeText,fontWeight: FontWeight.w500,fontSize: textSizeSmall),),
+                                                  style: TextStyle(color: ColorDark.collegeText,fontWeight: FontWeight.w500,fontSize: textSizeNormal),),
                                               ),
 
                                               // Container(
@@ -175,11 +173,11 @@ class HomeScreen extends StatelessWidget {
                                                   mainAxisAlignment: MainAxisAlignment.start,
                                                   children: [
                                                     Container(
-                                                      child: Text("QRCode -",style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.collegeText,fontSize: textSizeSmallest)),
+                                                      child: Text("QRCode -",style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.collegeText,fontSize: textSizeLargeMedium)),
                                                     ),
                                                     SizedBox(width: 20,),
                                                     Container(
-                                                      child: Text('${homeController.dataList.elementAt(index).qRCode}',style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.collegeText,fontSize: textSizeSmallest)),
+                                                      child: Text('${homeController.dataList.elementAt(index).qRCode}',style: TextStyle(fontWeight: FontWeight.w500,color: ColorDark.collegeText,fontSize: textSizeLargeMedium)),
                                                     )
                                                   ],
                                                 ),
@@ -190,11 +188,11 @@ class HomeScreen extends StatelessWidget {
                                                   mainAxisAlignment: MainAxisAlignment.start,
                                                   children: [
                                                     Container(
-                                                      child: Text('MRP -',style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.black,fontSize: sizeSmall)),
+                                                      child: Text('MRP -',style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.black,fontSize: textSizeMedium)),
                                                     ),
                                                     SizedBox(width: 20,),
                                                     Container(
-                                                      child: Text('\u{20B9}${homeController.dataList.elementAt(index).mRP}',style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.black,fontSize: sizeSmall)),
+                                                      child: Text('\u{20B9}${homeController.dataList.elementAt(index).mRP}',style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.black,fontSize: textSizeMedium)),
                                                     )
                                                   ],
                                                 ),
@@ -205,11 +203,11 @@ class HomeScreen extends StatelessWidget {
                                                   mainAxisAlignment: MainAxisAlignment.start,
                                                   children: [
                                                     Container(
-                                                      child: Text('SubCategory -',style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.black,fontSize: sizeSmall)),
+                                                      child: Text('SubCategory -',style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.black,fontSize: textSizeSmall)),
                                                     ),
                                                     SizedBox(width: 20,),
                                                     Container(
-                                                      child: Text('${homeController.dataList.elementAt(index).subCategory}',style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.black,fontSize: sizeSmall)),
+                                                      child: Text('${homeController.dataList.elementAt(index).subCategory}',maxLines: 2,overflow: TextOverflow.ellipsis,style: TextStyle(fontWeight: FontWeight.w700,color: ColorDark.black,fontSize: textSizeSmall)),
                                                     )
                                                   ],
                                                 ),

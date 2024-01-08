@@ -23,6 +23,7 @@ abstract class ColorDark {
   static const Color preferenceColor = Color(0xff3C6EA1);
   static const Color yellowColor = Color(0xffFBB31E);
   static const Color greyColor = Color(0xffD3D3D3);
+  static const Color blueColor = Color(0xff072F5F);
 
   static const Color subTitleTextColor = Color(0x7D121212);
 
